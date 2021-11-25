@@ -16,21 +16,20 @@ class ModuleOneTest {
 
     //when
     List<String> results = PortfolioManagerApplication
-        .mainReadFile(new String[]{filename});
+        .mainReadFile(new String[] {filename });
 
-    //then
+    // then
     Assertions.assertEquals(expected, results);
   }
 
   @Test
   void mainReadFileEdgecase() throws Exception {
-    //given
+    // given
     String filename = "assessments/empty.json";
-    List<String> expected = Arrays.asList(new String[]{});
+    List<String> expected = Arrays.asList(new String[] {});
 
-    //when
-    List<String> results = PortfolioManagerApplication
-        .mainReadFile(new String[]{filename});
+    // when
+    List<String> results = PortfolioManagerApplication.mainReadQuotes(new String[] { filename });
 
     //then
     Assertions.assertEquals(expected, results);
