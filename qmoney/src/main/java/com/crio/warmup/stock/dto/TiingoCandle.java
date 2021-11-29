@@ -7,7 +7,6 @@ import java.time.LocalDate;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TiingoCandle implements Candle {
 
-  public static int length;
   private Double open;
   private Double close;
   private Double high;

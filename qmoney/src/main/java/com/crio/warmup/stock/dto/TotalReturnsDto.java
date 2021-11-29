@@ -3,20 +3,15 @@ package com.crio.warmup.stock.dto;
 
 public class TotalReturnsDto {
 
+  private String symbol;
+  private Double closingPrice;
 
-private String symbol;
-private Double closingPrice;
+  public TotalReturnsDto(String symbol, Double closingPrice) {
+    this.symbol = symbol;
+    this.closingPrice = closingPrice;
+  }
 
-//  public TotalReturnsDto(String symbol2, Double close) {
- 
-//}
-public TotalReturnsDto(String symbol, Double closingPrice) {
-  this.symbol = symbol;
-  this.closingPrice = closingPrice;
-}
-
-
-public String getSymbol() {
+  public String getSymbol() {
     return symbol;
   }
 
