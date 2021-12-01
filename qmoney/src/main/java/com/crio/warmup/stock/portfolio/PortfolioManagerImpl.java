@@ -18,8 +18,6 @@ public class PortfolioManagerImpl implements PortfolioManager {
 
 private RestTemplate restTemplate;
 
-private   String token = "675a478a549d0aaf46c228675042d4562e2bc1e4";
-
   // Caution: Do not delete or modify the constructor, or else your build will break!
   // This is absolutely necessary for backward compatibility
  
@@ -59,9 +57,10 @@ public List<Candle> getStockQuote(String symbol, LocalDate from, LocalDate to) {
   }
 
   protected String buildUri(String symbol, LocalDate startDate, LocalDate endDate) {
-       String uriTemplate = "https:api.tiingo.com/tiingo/daily/$SYMBOL/prices?"
-            + "startDate=$STARTDATE&endDate=$ENDDATE&token=$APIKEY";
-          return uriTemplate;
+           String uriTemplate = "https://api.tiingo.com/tiingo/daily/" + symbol + "/prices?" 
+                + "startDate=" + startDate + "&endDate=" + endDate 
+                +  "&token= 675a478a549d0aaf46c228675042d4562e2bc1e4";
+            return uriTemplate;
   }
 
 @Override
