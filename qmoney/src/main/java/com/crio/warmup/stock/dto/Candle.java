@@ -7,7 +7,7 @@ public interface Candle {
 
   Double getOpen();
 
-  Double getClose();
+ Double getClose();
 
   Double getHigh();
 

@@ -3,6 +3,10 @@ package com.crio.warmup.stock;
 
 import com.crio.warmup.stock.dto.*;
 import com.crio.warmup.stock.log.UncaughtExceptionHandler;
+import com.crio.warmup.stock.portfolio.PortfolioManagerImpl;
+import com.crio.warmup.stock.portfolio.PortfolioManager;
+import com.crio.warmup.stock.portfolio.PortfolioManagerFactory;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
@@ -223,6 +227,27 @@ public class PortfolioManagerApplication {
     Double annualizedReturn = Math.pow((1 + totalReturn), (1.0 / totalNoOfYears)) - 1;
     return new AnnualizedReturn(portfolioTrades.getSymbol(), annualizedReturn, totalReturn);
     }
+
+    public static String readFileAsString(String file) throws IOException, URISyntaxException {
+      return file;
+    }
+
+    
+    public static List<AnnualizedReturn> mainCalculateReturnsAfterRefactor(String[] args)
+    throws Exception {
+     String file = args[0];
+     LocalDate endDate = LocalDate.parse(args[1]);
+     String contents = readFileAsString(file);
+     File file1 = resolveFileFromResources(contents);
+     ObjectMapper objectMapper = getObjectMapper();
+     
+    List<PortfolioTrade> portfolioTrades = objectMapper.readValue(file1,
+    new TypeReference<List<PortfolioTrade>>() {});
+    RestTemplate restTemplate = new RestTemplate();
+    PortfolioManager portfolioManager = PortfolioManagerFactory.getPortfolioManager(restTemplate);
+     return portfolioManager.calculateAnnualizedReturn(portfolioTrades, endDate);
+}
+
 
   public static void main(String[] args) throws Exception {
     Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler());
