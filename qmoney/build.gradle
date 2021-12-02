@@ -7,7 +7,6 @@ group = 'com.crio.warmup'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -51,12 +50,24 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.2.4'
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testImplementation('org.junit.jupiter:junit-jupiter:5.6.0')
-
 }
 
 test {
     useJUnitPlatform()
 }
 
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.crio.warmup'
+            artifactId = 'annual-return'
+            version = '1.0.0'
+
+            from components.java
+        
+        }
+    }
+}
 
 
