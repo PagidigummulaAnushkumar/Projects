@@ -11,6 +11,7 @@ import com.crio.warmup.stock.dto.AnnualizedReturn;
 import com.crio.warmup.stock.dto.Candle;
 import com.crio.warmup.stock.dto.PortfolioTrade;
 import com.crio.warmup.stock.dto.TiingoCandle;
+
 import org.springframework.web.client.RestTemplate;
 
 public class PortfolioManagerImpl implements PortfolioManager {
@@ -21,6 +22,10 @@ private RestTemplate restTemplate;
   // Caution: Do not delete or modify the constructor, or else your build will break!
   // This is absolutely necessary for backward compatibility
  
+
+
+  // Caution: Do not delete or modify the constructor, or else your build will break!
+  // This is absolutely necessary for backward compatibility
   protected PortfolioManagerImpl(RestTemplate restTemplate) {
     this.restTemplate = restTemplate;
   }
